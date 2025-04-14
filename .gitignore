@@ -1,0 +1,7 @@
+.DS_Store
+/MHDDoS/venv
+/MHDDoS/.idea/
+/MHDDoS/files/proxies/*
+
+/bot/proxies.txt
+/bot/proxies_k6.txt
