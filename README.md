@@ -48,6 +48,7 @@ parallel -j 100 '
     echo "❌ {}"
   fi
 ' :::: proxies_input.txt
+```
 
 ## 3️⃣ Lọc trùng các Proxy sống
 
